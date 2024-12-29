@@ -102,3 +102,34 @@ connector: <aiohttp.connector.TCPConnector object at 0x7f6c1446ba30>
 INFO:     127.0.0.1:41802 - "POST /run-backtesting HTTP/1.1" 200 OK
 INFO:     127.0.0.1:44474 - "GET /is-docker-running HTTP/1.1" 200 OK
 INFO:     127.0.0.1:44478 - "GET /all-controller-configs HTTP/1.1" 200 OK
+2024-12-29 08:23:28,713 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f6c144e2050>
+2024-12-29 08:23:28,716 - asyncio - ERROR - Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x7f6c1444f760>, 293084.332283272)])']
+connector: <aiohttp.connector.TCPConnector object at 0x7f6c144e3880>
+2024-12-29 08:23:29,645 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f6c144e3130>
+2024-12-29 08:23:29,647 - asyncio - ERROR - Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x7f6c1444ce80>, 293085.265750242)])']
+connector: <aiohttp.connector.TCPConnector object at 0x7f6c144e0dc0>
+2024-12-29 08:23:29,648 - root - ERROR - Error updating balances for connector <hummingbot.connector.derivative.binance_perpetual.binance_perpetual_derivative.BinancePerpetualDerivative object at 0x7f6c56ae1800>: Error executing request GET https://fapi.binance.com/fapi/v2/account. HTTP status is 400. Error: {"code":-1021,"msg":"Timestamp for this request is outside of the recvWindow."}
+2024-12-29 08:23:30,087 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f6c303ba380>
+2024-12-29 08:23:30,088 - asyncio - ERROR - Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x7f6c1444d0c0>, 293085.706994029)])']
+connector: <aiohttp.connector.TCPConnector object at 0x7f6c303b9150>
+2024-12-29 08:23:31,109 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f6c303b8880>
+2024-12-29 08:23:31,110 - asyncio - ERROR - Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x7f6c1444efe0>, 293086.729206799)])']
+connector: <aiohttp.connector.TCPConnector object at 0x7f6c303b9630>
+2024-12-29 08:23:31,111 - root - ERROR - Error updating balances for connector <hummingbot.connector.derivative.binance_perpetual.binance_perpetual_derivative.BinancePerpetualDerivative object at 0x7f6c56ae1800>: Error executing request GET https://fapi.binance.com/fapi/v2/account. HTTP status is 400. Error: {"code":-1021,"msg":"Timestamp for this request is outside of the recvWindow."}
+2024-12-29 08:24:31,173 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f6c144e34f0>
+2024-12-29 08:24:31,174 - asyncio - ERROR - Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x7f6c3028c820>, 293146.79370518)])']
+connector: <aiohttp.connector.TCPConnector object at 0x7f6c144e3310>
+INFO:     127.0.0.1:54296 - "GET /is-docker-running HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54298 - "GET /all-controller-configs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54312 - "GET /is-docker-running HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54316 - "GET /all-controller-configs HTTP/1.1" 200 OK
