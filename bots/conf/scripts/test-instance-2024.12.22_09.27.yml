@@ -1,0 +1,11 @@
+asset_to_rebalance: USDC
+candles_config: []
+config_update_interval: 10
+controllers_config:
+- bbolingerV1-test_0.0.1.yml
+markets: {}
+max_controller_drawdown: '50'
+max_global_drawdown: '50'
+rebalance_interval: '60'
+script_file_name: v2_with_controllers.py
+time_to_cash_out: null

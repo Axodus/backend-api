@@ -1,0 +1,104 @@
+INFO:     127.0.0.1:35814 - "GET /is-docker-running HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35824 - "GET /accounts-state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35834 - "GET /account-state-history HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51630 - "GET /is-docker-running HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51636 - "GET /all-controller-configs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51642 - "GET /is-docker-running HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51654 - "GET /all-controller-configs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51666 - "GET /is-docker-running HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51670 - "GET /is-docker-running HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51674 - "GET /is-docker-running HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51684 - "GET /get-active-bots-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58584 - "GET /is-docker-running HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58588 - "GET /is-docker-running HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58604 - "GET /get-active-bots-status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47916 - "GET /is-docker-running HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47924 - "GET /all-controller-configs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47926 - "GET /is-docker-running HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47942 - "GET /all-controller-configs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47850 - "GET /is-docker-running HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47854 - "GET /all-controller-configs HTTP/1.1" 200 OK
+2024-12-28 17:17:13,734 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7fc2c36d3c40>
+2024-12-28 17:17:13,735 - asyncio - ERROR - Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x7fc2c371fe80>, 280834.922922947)])']
+connector: <aiohttp.connector.TCPConnector object at 0x7fc2c36d0190>
+2024-12-28 17:17:14,638 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7fc2c36d0c10>
+2024-12-28 17:17:14,639 - asyncio - ERROR - Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x7fc2c371fe80>, 280835.828200525)])']
+connector: <aiohttp.connector.TCPConnector object at 0x7fc2c36d1b10>
+INFO:     127.0.0.1:47860 - "POST /run-backtesting HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47864 - "GET /is-docker-running HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47874 - "GET /all-controller-configs HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'bots/controllers/directional_trading/whiterabbit_v1.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [30870]
+INFO:     Started server process [31172]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+2024-12-28 17:26:20,744 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f82344b8070>
+2024-12-28 17:26:20,745 - asyncio - ERROR - Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x7f82345a23e0>, 281381.935103886)])']
+connector: <aiohttp.connector.TCPConnector object at 0x7f82344b80a0>
+WARNING:  WatchFiles detected changes in 'bots/controllers/directional_trading/whiterabbit_v1.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [31172]
+INFO:     Started server process [31219]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+2024-12-28 17:26:57,017 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f01b4fa3fd0>
+2024-12-28 17:26:57,019 - asyncio - ERROR - Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x7f01b50c2380>, 281418.208054443)])']
+connector: <aiohttp.connector.TCPConnector object at 0x7f01b4fd8040>
+WARNING:  WatchFiles detected changes in 'bots/controllers/directional_trading/whiterabbit_v1.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [31219]
+INFO:     Started server process [31268]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+2024-12-28 17:27:41,445 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f6c303b80a0>
+2024-12-28 17:27:41,446 - asyncio - ERROR - Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x7f6c3049e380>, 281462.635512778)])']
+connector: <aiohttp.connector.TCPConnector object at 0x7f6c303b80d0>
+INFO:     127.0.0.1:34668 - "GET /is-docker-running HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34670 - "GET /all-controller-configs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34686 - "GET /is-docker-running HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34690 - "GET /all-controller-configs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37228 - "GET /is-docker-running HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37236 - "GET /all-controller-configs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37240 - "GET /is-docker-running HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37248 - "GET /all-controller-configs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49126 - "GET /is-docker-running HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49136 - "GET /all-controller-configs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49142 - "GET /is-docker-running HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49158 - "GET /all-controller-configs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41772 - "GET /is-docker-running HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41786 - "GET /all-controller-configs HTTP/1.1" 200 OK
+2024-12-28 17:30:34,022 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f6c1446ac20>
+2024-12-28 17:30:34,023 - asyncio - ERROR - Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x7f6c1444cfa0>, 281635.212881769)])']
+connector: <aiohttp.connector.TCPConnector object at 0x7f6c1446ac50>
+2024-12-28 17:30:36,375 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f6c1446be20>
+2024-12-28 17:30:36,377 - asyncio - ERROR - Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x7f6c1444d420>, 281637.563969248)])']
+connector: <aiohttp.connector.TCPConnector object at 0x7f6c1446be50>
+2024-12-28 17:30:37,286 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f6c1446ba00>
+2024-12-28 17:30:37,287 - asyncio - ERROR - Unclosed connector
+connections: ['deque([(<aiohttp.client_proto.ResponseHandler object at 0x7f6c1444d420>, 281638.475712386)])']
+connector: <aiohttp.connector.TCPConnector object at 0x7f6c1446ba30>
+INFO:     127.0.0.1:41802 - "POST /run-backtesting HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44474 - "GET /is-docker-running HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44478 - "GET /all-controller-configs HTTP/1.1" 200 OK
