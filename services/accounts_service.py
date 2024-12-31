@@ -3,15 +3,15 @@ import json
 import logging
 from datetime import datetime, timedelta
 from decimal import Decimal
+from typing import Optional
 
 from fastapi import HTTPException
 from hummingbot.client.config.client_config_map import ClientConfigMap
 from hummingbot.client.config.config_crypt import ETHKeyFileSecretManger
-from hummingbot.client.config.config_helpers import ClientConfigAdapter, ReadOnlyClientConfigAdapter, \
-    get_connector_class
+from hummingbot.client.config.config_helpers import ClientConfigAdapter, ReadOnlyClientConfigAdapter, get_connector_class
 from hummingbot.client.settings import AllConnectorSettings
 
-from config import CONFIG_PASSWORD, BANNED_TOKENS
+from config import BANNED_TOKENS, CONFIG_PASSWORD
 from utils.file_system import FileSystemUtil
 from utils.models import BackendAPIConfigAdapter
 from utils.security import BackendAPISecurity
@@ -41,6 +41,8 @@ class AccountsService:
         self.default_quote = default_quote
         self.history_file = account_history_file
         self.account_history_dump_interval = account_history_dump_interval_minutes
+        self._update_account_state_task: Optional[asyncio.Task] = None
+        self._dump_account_state_task: Optional[asyncio.Task] = None
 
     def get_accounts_state(self):
         return self.accounts_state
@@ -53,8 +55,20 @@ class AccountsService:
         Start the loop that updates the balances of all the accounts at a fixed interval.
         :return:
         """
-        asyncio.create_task(self.update_account_state_loop())
-        asyncio.create_task(self.dump_account_state_loop())
+        self._update_account_state_task = asyncio.create_task(self.update_account_state_loop())
+        self._dump_account_state_task = asyncio.create_task(self.dump_account_state_loop())
+
+    def stop_update_account_state_loop(self):
+        """
+        Stop the loop that updates the balances of all the accounts at a fixed interval.
+        :return:
+        """
+        if self._update_account_state_task:
+            self._update_account_state_task.cancel()
+        if self._dump_account_state_task:
+            self._dump_account_state_task.cancel()
+        self._update_account_state_task = None
+        self._dump_account_state_task = None
 
     async def update_account_state_loop(self):
         """

@@ -1,5 +1,4 @@
-from typing import List, Dict
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from typing import Dict, List
 
 from fastapi import APIRouter, HTTPException
 from hummingbot.client.settings import AllConnectorSettings
@@ -8,8 +7,6 @@ from starlette import status
 from services.accounts_service import AccountsService
 from utils.file_system import FileSystemUtil
 
-# Initialize the scheduler
-scheduler = AsyncIOScheduler()
 router = APIRouter(tags=["Manage Credentials"])
 file_system = FileSystemUtil(base_path="bots/credentials")
 accounts_service = AccountsService()
@@ -17,15 +14,12 @@ accounts_service = AccountsService()
 
 @router.on_event("startup")
 async def startup_event():
-    # Add the job to the scheduler
-    scheduler.start()
     accounts_service.start_update_account_state_loop()
 
 
 @router.on_event("shutdown")
 async def shutdown_event():
-    # Shutdown the scheduler on application exit
-    scheduler.shutdown()
+    accounts_service.stop_update_account_state_loop()
 
 
 @router.get("/accounts-state", response_model=Dict[str, Dict[str, List[Dict]]])
