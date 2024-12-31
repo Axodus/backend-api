@@ -1,0 +1,11 @@
+asset_to_rebalance: USDT
+candles_config: []
+config_update_interval: 10
+controllers_config:
+- gridSpotUSDC-USDT_grid.yml
+markets: {}
+max_controller_drawdown: '2'
+max_global_drawdown: '2'
+rebalance_interval: '720'
+script_file_name: v2_with_controllers.py
+time_to_cash_out: null
