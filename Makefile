@@ -43,7 +43,7 @@ install-pre-commit:
 	fi && pre-commit install'
 
 docker_build:
-	docker build -t hummingbot/backend-api:latest .
+	docker build -t mzfshark/backend-api:latest .
 
 docker_run:
 	docker compose up -d
