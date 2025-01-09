@@ -161,7 +161,6 @@ async def delete_controller_config(config_name: str):
         raise HTTPException(status_code=404, detail=str(e))
 
 
-
 @router.post("/delete-script-config", status_code=status.HTTP_200_OK)
 async def delete_script_config(config_name: str):
     try:
@@ -189,4 +188,3 @@ async def delete_all_script_configs():
         return {"message": "All script configurations deleted successfully."}
     except FileNotFoundError as e:
         raise HTTPException(status_code=404, detail=str(e))
-

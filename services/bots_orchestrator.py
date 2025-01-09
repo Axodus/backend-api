@@ -154,13 +154,11 @@ class BotsManager:
     def get_bot_status(self, bot_name):
         if bot_name in self.active_bots:
             try:
-
                 broker_listener = self.active_bots[bot_name]["broker_listener"]
                 controllers_performance = broker_listener.get_bot_performance()
                 performance = self.determine_controller_performance(controllers_performance)
                 error_logs = broker_listener.get_bot_error_logs()
                 general_logs = broker_listener.get_bot_general_logs()
-
                 status = "running" if len(performance) > 0 else "stopped"
                 return {
                     "status": status,

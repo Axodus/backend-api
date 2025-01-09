@@ -1,4 +1,3 @@
-
 import os
 import secrets
 from typing import Annotated
@@ -57,4 +56,3 @@ app.include_router(manage_backtesting.router, dependencies=[Depends(auth_user)])
 app.include_router(manage_databases.router, dependencies=[Depends(auth_user)])
 app.include_router(manage_performance.router, dependencies=[Depends(auth_user)])
 app.include_router(manage_accounts.router, dependencies=[Depends(auth_user)])
-
