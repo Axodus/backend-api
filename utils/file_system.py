@@ -193,7 +193,9 @@ class FileSystemUtil:
     def get_connector_keys_path(account_name: str, connector_name: str) -> Path:
         return Path(f"bots/credentials/{account_name}/connectors/{connector_name}.yml")
 
+
     @staticmethod
+
     def save_model_to_yml(yml_path: Path, cm: ClientConfigAdapter):
         try:
             cm_yml_str = cm.generate_yml_output_str_with_comments()
@@ -201,6 +203,7 @@ class FileSystemUtil:
                 outfile.write(cm_yml_str)
         except Exception as e:
             logging.error("Error writing configs: %s" % (str(e),), exc_info=True)
+
 
     def list_databases(self):
         archived_path = os.path.join(self.base_path, "archived")
@@ -222,3 +225,4 @@ class FileSystemUtil:
             checkpoints = [f for f in os.listdir(dir_path) if os.path.isfile(os.path.join(dir_path, f))
                            and f.startswith("checkpoint") and f.endswith(".sqlite")]
         return checkpoints
+

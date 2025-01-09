@@ -1,12 +1,15 @@
 import os
 import time
+
 from decimal import Decimal
+
 from typing import Dict, List, Optional, Set
 
 from hummingbot.client.hummingbot_application import HummingbotApplication
 from hummingbot.connector.connector_base import ConnectorBase
 from hummingbot.core.clock import Clock
 from hummingbot.core.data_type.common import OrderType, TradeType
+
 from hummingbot.data_feed.candles_feed.data_types import CandlesConfig
 from hummingbot.remote_iface.mqtt import ETopicPublisher
 from hummingbot.strategy.strategy_v2_base import StrategyV2Base, StrategyV2ConfigBase
@@ -27,6 +30,7 @@ class GenericV2StrategyWithCashOutConfig(StrategyV2ConfigBase):
     extra_inventory: Optional[float] = 0.02
     min_amount_to_rebalance_usd: Decimal = Decimal("8")
     asset_to_rebalance: str = "USDT"
+
 
 
 class GenericV2StrategyWithCashOut(StrategyV2Base):
@@ -54,6 +58,7 @@ class GenericV2StrategyWithCashOut(StrategyV2Base):
         self.rebalance_interval: int = self.config.rebalance_interval
         self._last_performance_report_timestamp = 0
         self._last_rebalance_check_timestamp = 0
+
         hb_app = HummingbotApplication.main_application()
         self.mqtt_enabled = hb_app._mqtt is not None
         self._pub: Optional[ETopicPublisher] = None
@@ -75,6 +80,7 @@ class GenericV2StrategyWithCashOut(StrategyV2Base):
 
     async def on_stop(self):
         await super().on_stop()
+
         if self.mqtt_enabled:
             self._pub({controller_id: {} for controller_id in self.controllers.keys()})
             self._pub = None
@@ -206,6 +212,7 @@ class GenericV2StrategyWithCashOut(StrategyV2Base):
         if self.current_timestamp - self._last_performance_report_timestamp >= self.performance_report_interval and \
                 self.mqtt_enabled:
             self._pub(self.performance_reports)
+
             self._last_performance_report_timestamp = self.current_timestamp
 
     def control_cash_out(self):
@@ -236,6 +243,7 @@ class GenericV2StrategyWithCashOut(StrategyV2Base):
             if not controller.config.manual_kill_switch and controller.status == RunnableStatus.TERMINATED:
                 if controller_id in self.drawdown_exited_controllers:
                     continue
+
                 self.logger().info(f"Restarting controller {controller_id}.")
                 controller.start()
 
@@ -266,6 +274,7 @@ class GenericV2StrategyWithCashOut(StrategyV2Base):
         connectors_position_mode = {}
         for controller_id, controller in self.controllers.items():
             self.max_pnl_by_controller[controller_id] = Decimal("0")
+
             config_dict = controller.config.dict()
             if "connector_name" in config_dict:
                 if self.is_perpetual(config_dict["connector_name"]):

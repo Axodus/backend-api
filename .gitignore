@@ -152,7 +152,7 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-# Nohup Logs
+# nohup log
 nohup.out
 
 # PyCharm
