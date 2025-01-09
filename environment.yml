@@ -1,3 +1,4 @@
+
 name: backend-api
 channels:
   - conda-forge
@@ -9,7 +10,7 @@ dependencies:
   - libcxx
   - pip
   - pip:
-      - hummingbot
+      - hummingbot==20241125
       - numpy==1.26.4
       - git+https://github.com/felixfontein/docker-py
       - python-dotenv
@@ -20,3 +21,4 @@ dependencies:
       - flake8
       - isort
       - pre-commit
+

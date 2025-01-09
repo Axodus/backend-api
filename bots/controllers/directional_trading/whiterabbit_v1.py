@@ -54,11 +54,6 @@ class WhiteRabbitV1ControllerConfig(DirectionalTradingControllerConfigBase):
         client_data=ClientFieldData(
             prompt=lambda mi: "Enter the RSI Oversold: ",
             prompt_on_new=True))
-    vol_ma: float = Field(
-        default=20,
-        client_data=ClientFieldData(
-            prompt=lambda mi: "Enter the Volume Average Period: ",
-            prompt_on_new=True))
 
     @validator("candles_connector", pre=True, always=True)
     def set_candles_connector(cls, v, values):
@@ -75,7 +70,9 @@ class WhiteRabbitV1ControllerConfig(DirectionalTradingControllerConfigBase):
 class WhiteRabbitV1Controller(DirectionalTradingControllerBase):
     def __init__(self, config: WhiteRabbitV1ControllerConfig, *args, **kwargs):
         self.config = config
+
         self.max_records = self.config.bb_length
+
         if len(self.config.candles_config) == 0:
             self.config.candles_config = [CandlesConfig(
                 connector=config.candles_connector,
@@ -92,7 +89,7 @@ class WhiteRabbitV1Controller(DirectionalTradingControllerBase):
             trading_pair=self.config.candles_trading_pair,
             interval=self.config.interval,
             max_records=self.max_records
-        ).copy()
+
 
         # Add indicators
         df.ta.bbands(length=self.config.bb_length, std=self.config.bb_std, append=True)
@@ -102,27 +99,30 @@ class WhiteRabbitV1Controller(DirectionalTradingControllerBase):
         bbp = df[f"BBP_{self.config.bb_length}_{self.config.bb_std}"]
         rsi = df[f"RSI_{self.config.rsi_length}"]
 
-        # Calculate volume moving average
-        df.loc[:, "vol_ma"] = df["volume"].rolling(window=int(self.config.vol_ma)).mean()
 
        # Long and short conditions using OR (|) and AND (&) operators
-        long_condition = (bbp < self.config.bb_long_threshold) | (rsi < self.config.rsi_oversold)
-        short_condition = (bbp > self.config.bb_short_threshold) | (rsi > self.config.rsi_overbought)
+        long_condition = (bbp < self.config.bb_long_threshold) & (rsi < self.config.rsi_oversold)
+        short_condition = (bbp > self.config.bb_short_threshold) & (rsi > self.config.rsi_overbought)
 
         # Adjusted conditions for outside bands
-        outside_lower_band = df["close"] < self.config.bb_long_threshold
-        outside_upper_band = df["close"] > self.config.bb_short_threshold
+        #outside_lower_band = df["close"] < self.config.bb_long_threshold
+        #outside_upper_band = df["close"] > self.config.bb_short_threshold
 
         # Reversal conditions: Using AND to require both price and volume conditions
-        reverse_to_long = (outside_lower_band & (df["volume"] > df["vol_ma"]))
-        reverse_to_short = (outside_upper_band & (df["volume"] > df["vol_ma"]))
+        #reverse_to_long = (outside_lower_band & (df["volume"] > df["vol_ma"]))
+        #reverse_to_short = (outside_upper_band & (df["volume"] > df["vol_ma"]))
 
         # Signals initialization
-        df.loc[:, "signal"] = 0  # Initialize all signals to 0
+        df["signal"] = 0
         df.loc[long_condition, "signal"] = 1
         df.loc[short_condition, "signal"] = -1
 
-        # Reversal signals: AND or OR
-        df.loc[:, "reversal"] = 0  # Initialize reversals to 0
-        df.loc[reverse_to_long, "reversal"] = 1
-        df.loc[reverse_to_short, "reversal"] = -1
+        # Update processed data
+        self.processed_data["signal"] = df["signal"].iloc[-1]
+        self.processed_data["features"] = df
+
+
+
+
+
+
