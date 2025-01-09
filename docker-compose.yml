@@ -1,22 +1,18 @@
-version: "3"
+version: "3.2"
 
 services:
   backend-api:
-    container_name: backend-api
-    image: mzfshark/backend-api:latest
-
+    build: .
     ports:
       - "8000:8000"
     volumes:
       - ./bots:/backend-api/bots
       - /var/run/docker.sock:/var/run/docker.sock
-
+    env_file:
+      - .env
     environment:
       - BROKER_HOST=emqx
       - BROKER_PORT=1883
-      - USERNAME=admin
-      - PASSWORD=admin
-
     networks:
       - emqx-bridge
   emqx:
