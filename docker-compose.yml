@@ -1,9 +1,10 @@
-version: "3.9"
+version: "3.2"
 
 services:
   backend-api:
     container_name: backend-api
-    image: hummingbot/backend-api:latest
+#    image: hummingbot/backend-api:latest
+    build: .
     ports:
       - "8000:8000"
     volumes:

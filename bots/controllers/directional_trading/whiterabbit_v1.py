@@ -9,6 +9,7 @@ from hummingbot.strategy_v2.controllers.directional_trading_controller_base impo
 )
 from pydantic import Field, validator
 
+
 class WhiteRabbitV1ControllerConfig(DirectionalTradingControllerConfigBase):
     controller_name = "whiterabbit_v1"
     candles_config: List[CandlesConfig] = []
@@ -67,6 +68,7 @@ class WhiteRabbitV1ControllerConfig(DirectionalTradingControllerConfigBase):
             return values.get("trading_pair")
         return v
 
+
 class WhiteRabbitV1Controller(DirectionalTradingControllerBase):
     def __init__(self, config: WhiteRabbitV1ControllerConfig, *args, **kwargs):
         self.config = config
@@ -88,8 +90,7 @@ class WhiteRabbitV1Controller(DirectionalTradingControllerBase):
             connector_name=self.config.candles_connector,
             trading_pair=self.config.candles_trading_pair,
             interval=self.config.interval,
-            max_records=self.max_records
-
+            max_records=self.max_records)
 
         # Add indicators
         df.ta.bbands(length=self.config.bb_length, std=self.config.bb_std, append=True)
@@ -99,18 +100,9 @@ class WhiteRabbitV1Controller(DirectionalTradingControllerBase):
         bbp = df[f"BBP_{self.config.bb_length}_{self.config.bb_std}"]
         rsi = df[f"RSI_{self.config.rsi_length}"]
 
-
-       # Long and short conditions using OR (|) and AND (&) operators
+        # Long and short conditions using OR (|) and AND (&) operators
         long_condition = (bbp < self.config.bb_long_threshold) & (rsi < self.config.rsi_oversold)
         short_condition = (bbp > self.config.bb_short_threshold) & (rsi > self.config.rsi_overbought)
-
-        # Adjusted conditions for outside bands
-        #outside_lower_band = df["close"] < self.config.bb_long_threshold
-        #outside_upper_band = df["close"] > self.config.bb_short_threshold
-
-        # Reversal conditions: Using AND to require both price and volume conditions
-        #reverse_to_long = (outside_lower_band & (df["volume"] > df["vol_ma"]))
-        #reverse_to_short = (outside_upper_band & (df["volume"] > df["vol_ma"]))
 
         # Signals initialization
         df["signal"] = 0
@@ -120,9 +112,3 @@ class WhiteRabbitV1Controller(DirectionalTradingControllerBase):
         # Update processed data
         self.processed_data["signal"] = df["signal"].iloc[-1]
         self.processed_data["features"] = df
-
-
-
-
-
-
