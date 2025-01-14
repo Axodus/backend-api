@@ -1,0 +1,11 @@
+asset_to_rebalance: USDT
+candles_config: []
+config_update_interval: 10
+controllers_config:
+- GridBtcPerpDailly_0.1.yml
+markets: {}
+max_controller_drawdown: '2'
+max_global_drawdown: '1'
+rebalance_interval: '7200'
+script_file_name: v2_with_controllers.py
+time_to_cash_out: null

@@ -3,9 +3,7 @@ version: "3.2"
 services:
   backend-api:
     container_name: backend-api
-#    image: hummingbot/backend-api:latest
-    build: .
-    restart: unless-stopped
+    image: hummingbot/backend-api:latest
     ports:
       - "8000:8000"
     volumes:
@@ -17,7 +15,7 @@ services:
       - USERNAME=admin
       - PASSWORD=admin
     networks:
-      - axodus-network
+      - emqx-bridge
   emqx:
     container_name: hummingbot-broker
     image: emqx:5
@@ -41,7 +39,7 @@ services:
       - "18083:18083"  # http:dashboard
       - "61613:61613"  # web-stomp gateway
     networks:
-      axodus-network:
+      emqx-bridge:
         aliases:
           - node1.emqx.local
     healthcheck:
@@ -51,7 +49,7 @@ services:
       retries: 5
 
 networks:
-  axodus-network:
+  emqx-bridge:
     driver: bridge
 
 volumes:

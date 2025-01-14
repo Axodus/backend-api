@@ -1,0 +1,126 @@
+anonymized_metrics_mode:
+  anonymized_metrics_interval_min: 15.0
+autofill_import: disabled
+balance_asset_limit:
+  ascend_ex: {}
+  ascend_ex_paper_trade: {}
+  binance: {}
+  binance_paper_trade: {}
+  binance_us: {}
+  bitfinex: {}
+  bitmart: {}
+  bitmex: {}
+  bitmex_testnet: {}
+  btc_markets: {}
+  bybit: {}
+  bybit_testnet: {}
+  coinbase_pro: {}
+  foxbit: {}
+  gate_io: {}
+  gate_io_paper_trade: {}
+  hitbtc: {}
+  huobi: {}
+  injective_v2: {}
+  kraken: {}
+  kucoin: {}
+  kucoin_paper_trade: {}
+  mexc: {}
+  mock_paper_exchange: {}
+  ndax: {}
+  ndax_testnet: {}
+  okx: {}
+  polkadex: {}
+  vertex: {}
+  vertex_testnet: {}
+  woo_x: {}
+  woo_x_testnet: {}
+certs_path: /Users/dardonacci/Documents/work/hummingbot/certs
+color:
+  bottom_pane: '#000000'
+  bronze_label: '#CD7F32'
+  error_label: '#FF0000'
+  gold_label: '#FFD700'
+  info_label: '#5FD7FF'
+  input_pane: '#1C1C1C'
+  logs_pane: '#121212'
+  output_pane: '#262626'
+  primary_label: '#5FFFD7'
+  secondary_label: '#FFFFFF'
+  silver_label: '#C0C0C0'
+  success_label: '#5FFFD7'
+  terminal_primary: '#5FFFD7'
+  top_pane: '#000000'
+  warning_label: '#FFFF00'
+command_shortcuts:
+- arguments:
+  - Bid Spread
+  - Ask Spread
+  command: spreads
+  help: Set bid and ask spread
+  output:
+  - config bid_spread $1
+  - config ask_spread $2
+commands_timeout:
+  create_command_timeout: 10.0
+  other_commands_timeout: 30.0
+db_mode:
+  db_engine: sqlite
+debug_console: false
+fetch_pairs_from_all_exchanges: false
+gateway:
+  gateway_api_host: localhost
+  gateway_api_port: '15888'
+global_token:
+  global_token_name: USDT
+  global_token_symbol: $
+instance_id: hummingbot-whiterabbit_test-2025.01.14_11.42
+kill_switch_mode: {}
+log_level: INFO
+logger_override_whitelist:
+- hummingbot.strategy.arbitrage
+- hummingbot.strategy.cross_exchange_market_making
+- conf
+manual_gas_price: 50.0
+market_data_collection:
+  market_data_collection_depth: 20
+  market_data_collection_enabled: true
+  market_data_collection_interval: 60
+mqtt_bridge:
+  mqtt_autostart: true
+  mqtt_commands: true
+  mqtt_events: true
+  mqtt_external_events: true
+  mqtt_host: localhost
+  mqtt_logger: true
+  mqtt_namespace: hbot
+  mqtt_notifier: true
+  mqtt_password: ''
+  mqtt_port: 1883
+  mqtt_ssl: false
+  mqtt_username: ''
+paper_trade:
+  paper_trade_account_balance:
+    BTC: 1.0
+    DAI: 1000.0
+    ETH: 10.0
+    ONE: 1000.0
+    TUSD: 1000.0
+    USDC: 1000.0
+    USDQ: 1000.0
+    USDT: 1000.0
+    WETH: 10.0
+  paper_trade_exchanges:
+  - binance
+  - kucoin
+  - ascend_ex
+  - gate_io
+pmm_script_mode: {}
+previous_strategy: some-strategy.yml
+rate_limits_share_pct: 100.0
+rate_oracle_source:
+  name: binance
+send_error_logs: true
+strategy_report_interval: 900.0
+tables_format: psql
+telegram_mode: {}
+tick_size: 1.0

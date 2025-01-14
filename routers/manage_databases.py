@@ -1,13 +1,11 @@
 import json
 import time
-
-from typing import List, Dict, Any
+from typing import Any, Dict, List
 
 import pandas as pd
-
-from utils.etl_databases import HummingbotDatabase, ETLPerformance
 from fastapi import APIRouter
 
+from utils.etl_databases import ETLPerformance, HummingbotDatabase
 from utils.file_system import FileSystemUtil
 
 router = APIRouter(tags=["Database Management"])
